@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
+  
+  
 
-  get 'edit/new'
-  get 'edit/index'
-  get 'edit/show'
-  get 'edit/edit'
+  
+  resources :books
   
 
   root to: 'homes#top'
