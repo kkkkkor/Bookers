@@ -10,6 +10,7 @@ class BooksController < ApplicationController
   end
 
   def edit
+    # @book = Book.find(params[:id])
   end
 
 
@@ -19,6 +20,12 @@ class BooksController < ApplicationController
     # redirect_to'/top'
     redirect_to book_path(book.id)
 
+  end
+
+  def destroy
+    list = Book.find(params[:id])
+    list.destroy
+    redirect_to '/books'
   end
 
   private

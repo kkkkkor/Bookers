@@ -8,15 +8,14 @@
         <th>body</th>
     </tr>
    </thead>
-
   <tbody>
     <% @books.each do |list| %>
     <tr>
     <td><%= list.title %></td>
     <td><%= list.body %></td>
-     <td><a class="show_92720" href="/books/92720">Show</a></td>
-        <td><a class="edit_92720" href="/books/92720/edit">Edit</a></td>
-        <td><a data-confirm="Are you sure?" class="destroy_92720" rel="nofollow" data-method="delete" href="/books/92720">Destroy</a></td>
+   <td><%= link_to "show",book_path(list.id) %></td>
+   <td><%= link_to "edit",edit_book_path(list.id) %></td>
+<td><%= link_to "destroy",destroy_book_path(list.id),method: :delete, "data-confirm" =>"本当に削除しますか？" %></td>
     </tr>
     <% end %>
   </tbody>
@@ -33,3 +32,4 @@
 <!-- link_to index.title, "/books/#[books:id]" %>-->
 <!--</span>-->
 <% end %>
+
