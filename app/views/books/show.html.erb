@@ -1,3 +1,9 @@
 <!--投稿詳細画面-->
-<h1>Books</h1>
-<p>title</p>
+
+<strong>Title:</strong>
+<p><%= @books.title %></p>
+<strong>Body:</strong>
+<p><%= @books.body %></p>
+<%= link_to 'Edit', edit_book_path %>|<%= link_to :back do %>
+  Back
+<% end %>
