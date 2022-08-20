@@ -1,9 +1,10 @@
 <!--投稿詳細画面-->
-
-<strong>Title:</strong>
-<p><%= @books.title %></p>
-<strong>Body:</strong>
-<p><%= @books.body %></p>
+<%= flash[:notice] %>
+<p><strong>Title:</strong>
+<%= @book.title %></p>
+<p><strong>Body:</strong>
+<%= @book.body %></p>
 <%= link_to 'Edit', edit_book_path %>|<%= link_to :back do %>
   Back
+
 <% end %>

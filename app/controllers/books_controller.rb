@@ -6,19 +6,35 @@ class BooksController < ApplicationController
   end
 
   def show
-    @books = Book.find(params[:id])
+    @book = Book.find(params[:id])
+  # if @books.save
+  #   flash[:notice]='Book was successfully created.'
+  #   redirect_to action: :update
+  # end
   end
 
   def edit
-    @books = Book.find(params[:id])
+    @book = Book.find(params[:id])
+    # @book = Update_books.find(params[:id])
   end
 
 
   def create
     book = Book.new(book_params)
-    book.save
-    # redirect_to'/top'
-    redirect_to book_path(book.id)
+    # flashhashの記述
+    if book.save
+      redirect_to book_path(book), notice: 'Book was successful created.'
+    else
+      render :index
+    end
+    # バリデーション
+    @book = Book.new(book_params)
+    if @book.save
+      redirect_to book_path(@book.id)
+    else
+      render :new
+    end
+
 
   end
 
@@ -28,9 +44,19 @@ class BooksController < ApplicationController
     redirect_to '/books'
   end
 
-  private
-  def book_params
-    params.require(:book).permit(:title, :body)
+  def update
+    book = Book.find(params[:id])
+    # book.update(book_params)
+    # redirect_to book_path(book.id)
+    if book.save
+      redirect_to book_path(book), notice: 'Book was successfully updated.'
+    else
+      render :index
+    end
   end
 
-end
+  private
+    def book_params
+      params.require(:book).permit(:title, :body)
+    end
+  end

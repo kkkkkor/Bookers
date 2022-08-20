@@ -1,16 +1,21 @@
 <!--投稿編集画面-->
 <h1>Editing Book</h1>
-<%= form_with model: @books do |f| %>
+<%= form_with model: @book do |f| %>
 <h4>title</h4>
 
 <%= f.text_field :title %>
 <h4>body</h4>
 <%= f.text_area :body %>
 
-<a><%= f.submit "up date Book"%></a>
-<%= link_to "up date Book", book_path(@books.id) %>
+<p><%= f.submit "update Book"%></p>
+ <!--link_to "up date Book",/books (@book.id) %>-->
+
 <% end %>
 
-<%= link_to 'Show', book_path %>|<%= link_to :back do %>
+ <!--root :to => 'books#update'-->
+ <!--form_with model: @post, url: update_list_path(@post.id), method: :patch do |f| %>-->
+<!--<end %>-->
+
+<%= link_to 'Show', book_path(@book)%>|<%= link_to :back do %>
   Back
 <% end %>
